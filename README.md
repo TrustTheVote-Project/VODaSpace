@@ -1,4 +1,4 @@
-# vtl
+# VTL
 
 Parser for the VTL XML format conforming to XSD 4.4.
 
