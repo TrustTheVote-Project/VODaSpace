@@ -8,3 +8,11 @@ def node_from_fixture(name)
   doc.root
 end
 
+def assert_required(key, fixture)
+  err = assert_raises(VTL::ValidationError) do
+    parse fixture
+  end
+
+  assert_equal "#{key} is missing", err.message
+end
+

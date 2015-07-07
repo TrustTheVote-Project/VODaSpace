@@ -11,17 +11,6 @@ class VTL::VoterTransactionRecord < VTL::Base
   attr_reader :comment
   attr_reader :election
 
-# <xs:element name="voterid"      type="xs:string" />
-# <xs:element name="date"         type="xs:dateTime" />
-# <xs:element name="action"       type="actionType" />
-# <xs:element name="form"         type="formType" minOccurs="0" />
-# <xs:element name="formNote"     type="formNoteType" minOccurs="0" />
-# <xs:element name="jurisdiction" type="xs:string" />
-# <xs:element name="leo"          type="xs:string" minOccurs="0" />
-# <xs:element name="notes"        type="noteType"  minOccurs="0" />
-# <xs:element name="comment"      type="xs:string" minOccurs="0" />
-# <xs:element name="election"     type="xs:string" minOccurs="0" />
-
 # actionType:
       # <!-- Two kinds of actions: (a) require form (b) no form involved.
       #      Really should be 2 separate types, and two separate options for VTR
@@ -126,16 +115,16 @@ class VTL::VoterTransactionRecord < VTL::Base
       # <xs:enumeration value="onlineBalloting" />
 
   def initialize(node)
-    @voter_id     = node.at_css('voterid').content
-    @date         = Timeliness.parse(node.at_css('date').content)
-    @action       = node.at_css('action').content
-    @jurisdiction = node.at_css('jurisdiction').content
-    @form         = value_or_nil(node, 'form')
-    @form_note    = value_or_nil(node, 'formNote')
-    @leo          = value_or_nil(node, 'leo')
-    @notes        = value_or_nil(node, 'notes')
-    @comment      = value_or_nil(node, 'comment')
-    @election     = value_or_nil(node, 'election')
+    @voter_id     = required(node, 'voterid')
+    @date         = Timeliness.parse(required(node, 'date'))
+    @action       = required(node, 'action')
+    @jurisdiction = required(node, 'jurisdiction')
+    @form         = optional(node, 'form')
+    @form_note    = optional(node, 'formNote')
+    @leo          = optional(node, 'leo')
+    @notes        = optional(node, 'notes')
+    @comment      = optional(node, 'comment')
+    @election     = optional(node, 'election')
   end
 end
 
