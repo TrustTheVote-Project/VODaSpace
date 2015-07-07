@@ -14,4 +14,10 @@ class VTL::Base
     v
   end
 
+  def among(key, value, values)
+    return value if value.nil? or value.empty?
+    raise VTL::ValidationError.new("#{key} value '#{value}' is not among #{values.inspect}") unless values.include?(value.downcase)
+    value
+  end
+
 end

@@ -16,3 +16,10 @@ def assert_required(key, fixture)
   assert_equal "#{key} is missing", err.message
 end
 
+def assert_invalid(key, fixture)
+  err = assert_raises(VTL::ValidationError) do
+    parse fixture
+  end
+
+  assert_match /^#{key} value .* is not among/, err.message
+end

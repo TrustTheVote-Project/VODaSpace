@@ -1,12 +1,6 @@
 class VTL::VoterTransactionLog < VTL::Base
 
-  HASH_ALG_NONE = "none"
-  HASH_ALG_SHA1 = "sha1"
-
-# <xs:element name="origin"     type="xs:string" />
-# <xs:element name="originUniq" type="xs:string" minOccurs="0" />
-# <xs:element name="hashAlg"    type="hashAlgType" />
-# <xs:element name="createDate" type="xs:dateTime" />
+  HASH_ALG_VALUES = %w( none sha1 )
 
   # header
   attr_reader :origin
@@ -20,7 +14,7 @@ class VTL::VoterTransactionLog < VTL::Base
   def initialize(node)
     @origin      = required(node, 'origin')
     @origin_uniq = optional(node, 'originUniq')
-    @hash_alg    = required(node, 'hashAlg')
+    @hash_alg    = among('hashAlg', required(node, 'hashAlg'), HASH_ALG_VALUES)
     @create_date = Timeliness.parse(required(node, 'createDate'), zone: :utc)
 
     @records = node.css('voterTransactionRecord').map { |node| VTL::VoterTransactionRecord.new(node) }

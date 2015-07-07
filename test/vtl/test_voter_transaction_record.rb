@@ -10,9 +10,9 @@ class VTL::VoterTransactionRecordTest < Minitest::Test
     assert_equal "approve", rec.action
     assert_equal "VoterRecordUpdate", rec.form
     assert_equal "PRINCE GEORGE COUNTY", rec.jurisdiction
-    assert_equal "acceptChange", rec.form_note
+    assert_equal "NVRAmotorVehicles", rec.form_note
     assert_equal "Leo", rec.leo
-    assert_equal "Notes", rec.notes
+    assert_equal "rejectLate", rec.notes
     assert_equal "Comment", rec.comment
     assert_equal "Election", rec.election
   end
@@ -46,6 +46,22 @@ class VTL::VoterTransactionRecordTest < Minitest::Test
 
   def test_missing_action
     assert_required 'action', "record-missing-action.xml"
+  end
+
+  def test_invalid_action
+    assert_invalid 'action', "record-invalid-action.xml"
+  end
+
+  def test_invalid_form
+    assert_invalid 'form', "record-invalid-form.xml"
+  end
+
+  def test_invalid_form_note
+    assert_invalid 'formNote', "record-invalid-form-note.xml"
+  end
+
+  def test_invalid_notes
+    assert_invalid 'notes', "record-invalid-notes.xml"
   end
 
   private

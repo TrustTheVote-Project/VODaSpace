@@ -33,6 +33,10 @@ class VTL::VoterTransactionLogTest < Minitest::Test
     assert_required "hashAlg", "log-missing-hash-alg.xml"
   end
 
+  def test_invalid_hash_alg
+    assert_invalid "hashAlg", "log-invalid-hash-alg.xml"
+  end
+
   def test_missing_create_date
     assert_required "createDate", "log-missing-create-date.xml"
   end

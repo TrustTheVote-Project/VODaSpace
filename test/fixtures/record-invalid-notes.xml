@@ -5,8 +5,5 @@
   <form>VoterRecordUpdate</form>
   <jurisdiction>PRINCE GEORGE COUNTY</jurisdiction>
   <formNote>NVRAmotorVehicles</formNote>
-  <leo>Leo</leo>
-  <notes>rejectLate</notes>
-  <comment>Comment</comment>
-  <election>Election</election>
+  <notes>invalid</notes>
 </voterTransactionRecord>
