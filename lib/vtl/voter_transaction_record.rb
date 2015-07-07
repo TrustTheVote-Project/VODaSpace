@@ -1,6 +1,4 @@
-require 'timeliness'
-
-class VTL::VoterTransactionRecord
+class VTL::VoterTransactionRecord < VTL::Base
 
   attr_reader :voter_id
   attr_reader :date
@@ -131,20 +129,13 @@ class VTL::VoterTransactionRecord
     @voter_id     = node.at_css('voterid').content
     @date         = Timeliness.parse(node.at_css('date').content)
     @action       = node.at_css('action').content
-    @form         = node.at_css('form').content
     @jurisdiction = node.at_css('jurisdiction').content
+    @form         = value_or_nil(node, 'form')
     @form_note    = value_or_nil(node, 'formNote')
     @leo          = value_or_nil(node, 'leo')
     @notes        = value_or_nil(node, 'notes')
     @comment      = value_or_nil(node, 'comment')
     @election     = value_or_nil(node, 'election')
-  end
-
-  private
-
-  def value_or_nil(node, key)
-    v = node.at_css(key)
-    v && v.content
   end
 end
 

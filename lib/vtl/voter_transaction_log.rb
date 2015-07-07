@@ -1,4 +1,4 @@
-class VTL::VoterTransactionLog
+class VTL::VoterTransactionLog < VTL::Base
 
   HASH_ALG_NONE = "none"
   HASH_ALG_SHA1 = "sha1"
@@ -16,5 +16,14 @@ class VTL::VoterTransactionLog
 
   # records
   attr_reader :records
+
+  def initialize(node)
+    @origin      = node.at_css('origin').content
+    @origin_uniq = value_or_nil(node, 'originUniq')
+    @hash_alg    = node.at_css('hashAlg').content
+    @create_date = Timeliness.parse(node.at_css('createDate').content, zone: :utc)
+
+    @records = node.css('voterTransactionRecord').map { |node| VTL::VoterTransactionRecord.new(node) }
+  end
 
 end

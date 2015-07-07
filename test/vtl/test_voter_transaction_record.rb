@@ -25,8 +25,8 @@ class VTL::VoterTransactionRecordTest < Minitest::Test
     assert_equal "ACLyxNKFJvmidhT0E7KttaM07lk=", rec.voter_id
     assert_equal "2014-07-11 15:46:38", rec.date.utc.strftime("%Y-%m-%d %H:%M:%S")
     assert_equal "approve", rec.action
-    assert_equal "VoterRecordUpdate", rec.form
     assert_equal "PRINCE GEORGE COUNTY", rec.jurisdiction
+    assert_nil   rec.form
     assert_nil   rec.form_note
     assert_nil   rec.leo
     assert_nil   rec.notes
