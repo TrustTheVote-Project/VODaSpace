@@ -2,6 +2,12 @@ require 'nokogiri'
 require 'timeliness'
 
 class VTL
+
+  def self.parse(xml)
+    doc = Nokogiri.XML(xml)
+    VTL::VoterTransactionLog.new(doc.root)
+  end
+
 end
 
 require_relative 'vtl/base'
