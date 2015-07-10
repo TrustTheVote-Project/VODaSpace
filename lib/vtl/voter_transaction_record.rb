@@ -11,16 +11,16 @@ class VTL::VoterTransactionRecord < VTL::Base
     postalSent emailSent electronicSent faxSent
     onlineVoterReg onlineBalloting ).map(&:downcase)
 
-  attr_reader :voter_id
-  attr_reader :date
-  attr_reader :action
-  attr_reader :form
-  attr_reader :form_note
-  attr_reader :jurisdiction
-  attr_reader :leo
-  attr_reader :notes
-  attr_reader :comment
-  attr_reader :election
+  attr_accessor :voter_id
+  attr_accessor :date
+  attr_accessor :action
+  attr_accessor :form
+  attr_accessor :form_note
+  attr_accessor :jurisdiction
+  attr_accessor :leo
+  attr_accessor :notes
+  attr_accessor :comment
+  attr_accessor :election
 
   def load_from_node(node)
     @voter_id     = required(node, 'voterid')

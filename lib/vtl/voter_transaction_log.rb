@@ -3,10 +3,10 @@ class VTL::VoterTransactionLog < VTL::Base
   HASH_ALG_VALUES = %w( none sha1 )
 
   # header
-  attr_reader :origin
-  attr_reader :origin_uniq
-  attr_reader :hash_alg
-  attr_reader :create_date
+  attr_accessor :origin
+  attr_accessor :origin_uniq
+  attr_accessor :hash_alg
+  attr_accessor :create_date
 
   # records
   attr_reader :records
