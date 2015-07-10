@@ -11,6 +11,10 @@ class VTL::VoterTransactionLog < VTL::Base
   # records
   attr_reader :records
 
+  def initialize
+    @records = []
+  end
+
   def load_from_node(node)
     @origin      = required(node, 'origin')
     @origin_uniq = optional(node, 'originUniq')
