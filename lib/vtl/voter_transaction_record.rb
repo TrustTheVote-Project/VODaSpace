@@ -22,7 +22,7 @@ class VTL::VoterTransactionRecord < VTL::Base
   attr_reader :comment
   attr_reader :election
 
-  def initialize(node)
+  def load_from_node(node)
     @voter_id     = required(node, 'voterid')
     @date         = Timeliness.parse(required(node, 'date'))
     @action       = among('action', required(node, 'action'), ACTION_VALUES)

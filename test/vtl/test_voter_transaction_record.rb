@@ -68,7 +68,9 @@ class VTL::VoterTransactionRecordTest < Minitest::Test
 
   def parse(name)
     node = node_from_fixture(name)
-    VTL::VoterTransactionRecord.new(node)
+    rec = VTL::VoterTransactionRecord.new
+    rec.load_from_node(node)
+    rec
   end
 
 end

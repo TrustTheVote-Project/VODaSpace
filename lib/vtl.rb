@@ -5,7 +5,9 @@ class VTL
 
   def self.parse(xml)
     doc = Nokogiri.XML(xml)
-    VTL::VoterTransactionLog.new(doc.root)
+    log = VTL::VoterTransactionLog.new
+    log.load_from_node(doc.root)
+    log
   end
 
 end

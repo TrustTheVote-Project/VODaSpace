@@ -11,13 +11,17 @@ class VTL::VoterTransactionLog < VTL::Base
   # records
   attr_reader :records
 
-  def initialize(node)
+  def load_from_node(node)
     @origin      = required(node, 'origin')
     @origin_uniq = optional(node, 'originUniq')
     @hash_alg    = among('hashAlg', required(node, 'hashAlg'), HASH_ALG_VALUES)
     @create_date = Timeliness.parse(required(node, 'createDate'), zone: :utc)
 
-    @records = node.css('voterTransactionRecord').map { |node| VTL::VoterTransactionRecord.new(node) }
+    @records = node.css('voterTransactionRecord').map do |node|
+      rec = VTL::VoterTransactionRecord.new
+      rec.load_from_node(node)
+      rec
+    end
   end
 
 end

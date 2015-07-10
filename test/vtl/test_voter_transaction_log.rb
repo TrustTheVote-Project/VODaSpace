@@ -45,7 +45,9 @@ class VTL::VoterTransactionLogTest < Minitest::Test
 
   def parse(name)
     node = node_from_fixture(name)
-    VTL::VoterTransactionLog.new(node)
+    log = VTL::VoterTransactionLog.new
+    log.load_from_node(node)
+    log
   end
 
 end
