@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
-  s.name        = 'vtl'
+  s.name        = 'demog'
   s.version     = '1.0.0'
-  s.date        = '2015-07-07'
-  s.summary     = "VTL parser"
-  s.description = "VTL parser library"
+  s.date        = '2015-07-15'
+  s.summary     = "Demographics parser"
+  s.description = "Demographics parser library"
   s.authors     = [ "Aleksey Gureiev" ]
   s.email       = 'spyromus@noizeramp.com'
-  s.homepage    = 'http://rubygems.org/gems/vtl'
+  s.homepage    = 'http://rubygems.org/gems/gemog'
   s.license     = 'MIT'
 
   s.files         = `git ls-files`.split($/)
@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "nokogiri"
   s.add_dependency "timeliness"
+  s.add_dependency "hashie"
 
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-minitest"

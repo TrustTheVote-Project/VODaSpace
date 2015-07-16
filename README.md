@@ -1,29 +1,31 @@
-# VTL
+# Demographics parser
 
-Parser for the VTL XML format conforming to XSD 4.4.
+Parser for the Demographics XML format.
 
 ## Usage
 
-    vtl = VTL.parse(xml_string)
+    Demog.parse(file) do |record|
+      ...
+    end
 
-Returns the `VTL::VoterTransactionLog` object that you can use to access data.
+Due to the size of demog files that can count Gbs of data, we don't do
+in-memory parsing, but streaming records. Each record contains:
 
-    origin
-    origin_uniq
-    hash_alg
-    create_date
-    records           # => [ VTL::VoterTransactionRecord, ... ]
-
-Each record has validated set of fields:
-
-    voter_id
-    date
-    action
-    form
-    form_note
-    jurisdiction
-    leo
-    notes
-    comment
-    election
-
+* voter\_id (string)
+* reg\_date (YYYY-mm-dd)
+* reg\_status (Active, Inactive, Cancelled)
+* gender (Male, Female, Unknown)
+* year\_of\_birth (YYYY)
+* zip
+* race (White, Black, Asian, Other)
+* political\_party\_name (optional)
+* overseas (boolean)
+* military (boolean)
+* disabled (boolean)
+* protected (boolean)
+* absentee\_ongoing (boolean)
+* absentee\_in\_this\_election (boolean)
+* precinct\_split\_id
+* jurisdiction (string)
+* locality
+* congressional\_district (string)

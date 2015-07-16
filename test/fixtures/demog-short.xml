@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<voterDemographicExtract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <header>
+    <origin>Sample Virginia Data</origin>
+    <originUniq>7468b548-9984-4696-9f62-c95e237d964f</originUniq>
+    <hashAlg>SHA1</hashAlg>
+    <createDate>2015-07-15T16:05:20</createDate>
+  </header>
+  <voterDemographicRecord>
+    <voterid>001000000</voterid>
+    <jurisdiction>ACCOMACK COUNTY</jurisdiction>
+    <regDate>1957-12-16</regDate>
+    <yearOfBirth>1939</yearOfBirth>
+    <regStatus>Active</regStatus>
+    <gender>Female</gender>
+    <race>White</race>
+    <politicalPartyName>Democratic</politicalPartyName>
+    <overseas>false</overseas>
+    <military>false</military>
+    <protected>true</protected>
+    <disabled>false</disabled>
+    <absenteeOngoing>false</absenteeOngoing>
+    <absenteeInThisElection>false</absenteeInThisElection>
+    <precinctSplitID></precinctSplitID>
+    <zip>0000</zip>
+  </voterDemographicRecord>
+  <voterDemographicRecord>
+    <voterid>001000001</voterid>
+    <jurisdiction>ACCOMACK COUNTY</jurisdiction>
+    <regDate>1947-04-07</regDate>
+    <yearOfBirth>1929</yearOfBirth>
+    <regStatus>Active</regStatus>
+    <gender>Male</gender>
+    <race>White</race>
+    <politicalPartyName>Democratic</politicalPartyName>
+    <overseas>false</overseas>
+    <military>false</military>
+    <protected>false</protected>
+    <disabled>true</disabled>
+    <absenteeOngoing>false</absenteeOngoing>
+    <absenteeInThisElection>false</absenteeInThisElection>
+    <precinctSplitID></precinctSplitID>
+    <zip>0000</zip>
+  </voterDemographicRecord>
+</voterDemographicExtract>
