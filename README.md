@@ -4,9 +4,22 @@ Parser for the Demographics XML format.
 
 ## Usage
 
-    Demog.parse(file) do |record|
-      ...
+    class Handler
+      def parsed_header(header)
+        # header.filename
+        # header.origin
+        # header.origin_uniq
+        # header.create_date
+        # header.hash_alg
+      end
+
+      def parsed_record(record)
+        # record.voter_id ...
+      end
     end
+
+    handler = Handler.new
+    Demog.parse_file(file, handler)
 
 Due to the size of demog files that can count Gbs of data, we don't do
 in-memory parsing, but streaming records. Each record contains:
