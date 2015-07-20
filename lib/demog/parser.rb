@@ -63,4 +63,7 @@ class Demog::Parser
   def end_document
   end
 
+  def error(msg)
+    @handler.xml_error(msg)
+  end
 end
