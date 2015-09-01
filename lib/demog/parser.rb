@@ -3,6 +3,8 @@ require 'demog/header'
 
 class Demog::Parser
 
+  attr_writer :filename
+
   def initialize(filename, handler)
     @filename = filename
     @handler  = handler
